@@ -9,10 +9,8 @@ public class PessoaFisica extends Cliente {
         this.cpf = cpf;
     }
 
-    // Getter específico
     public String getCpf() { return cpf; }
 
-    @Override
     public String toString() {
         return super.toString() + " - CPF: " + cpf;
     }
