@@ -4,36 +4,41 @@ import java.math.BigDecimal;
 
 public abstract class Produto {
     // definicao de atributos privados - encapsulamento
-    private String codigoUnico;
-    private String nome;
-    private BigDecimal precoBase;
+    protected String codigo;
+    protected String nome;
+    protected BigDecimal preco;
+    protected int tipo;
     //-----
 
     // construtores da classe
     public Produto() {  // construtor padrao
     }
-    public Produto(String codigoUnico, String nome, BigDecimal precoBase) {  // construtor completo
-		this.codigoUnico = codigoUnico;
+    public Produto(String codigo, String nome, BigDecimal preco, int tipo) {  // construtor completo
+		this.codigo = codigo;
 		this.nome = nome;
-		this.precoBase = precoBase;
+		this.preco = preco;
+		this.tipo = tipo;
 	}
     //-----
     
-    // getters
-    public String getCodigoUnico() {  // codigoUnico
-    	return codigoUnico;
+    // getterss
+    public String getCodigo() {  // codigoUnico
+    	return this.codigo;
     }
     public String getNome() {  // nome
-    	return nome;
+    	return this.nome;
     }
-    public BigDecimal getPrecoBase() {  // precoBase
-    	return precoBase;
+    public BigDecimal getPreco() {  // precoBase
+    	return this.preco;
+    }
+    public int getTipo() {  // tipo
+    	return this.tipo;
     }
     //-----
     
     // setters
-    public void setPrecoBase(BigDecimal precoBase) {  // precoBase
-    	this.precoBase = precoBase;
+    public void setPreco(BigDecimal preco) {  // precoBase
+    	this.preco = preco;
     }
     //-----
     
@@ -42,7 +47,7 @@ public abstract class Produto {
     
     // definicao manual do toString
     public String toString() {
-    	return String.format("%s - %s (R$ %.2f)", codigoUnico,nome,precoBase);
+    	return String.format("[%s] %s (R$ %.2f)", codigo,nome,preco);
     }
 
 }

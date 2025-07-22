@@ -2,12 +2,12 @@ package loja.model.cliente;
 
 import java.math.BigDecimal;
 
-public class Cliente {
-	// definicao de atributos privados - encapsulamento
-    private String idUnico;
-    private String nome;
-    private String endereco;
-    private String telefone;
+public abstract class Cliente {
+	// definicao de atributos protected - encapsulamento
+	protected String idUnico;
+    protected String nome;
+    protected String endereco;
+    protected String telefone;
     //-----
     
     // construtores da classe
