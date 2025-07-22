@@ -11,8 +11,8 @@ public class ProdutoFisico extends Produto {
     // construtores da classe
     public ProdutoFisico() {  // construtor padrao
     }
-    public ProdutoFisico(String codigo, String nome, BigDecimal preco, int tipo, double pesoKg, BigDecimal frete) {  // construtor completo
-    	super(codigo, nome, preco, tipo);
+    public ProdutoFisico(String codigo, String nome, BigDecimal preco, double pesoKg, BigDecimal frete) {  // construtor completo
+    	super(codigo, nome, preco, 1);
     	this.pesoKg = pesoKg;
     	this.frete = frete;
     }
@@ -39,7 +39,7 @@ public class ProdutoFisico extends Produto {
 
 	// metodo especifico do preco do produto
     public BigDecimal calcularPrecoFinal() {
-    	return this.preco + this.frete;
+    	return (this.preco.add(this.frete));
     }
     
     // definicao manual do toString

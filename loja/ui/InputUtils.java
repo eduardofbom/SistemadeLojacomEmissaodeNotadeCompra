@@ -8,18 +8,18 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class InputUtils {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     public static String lerString(String mensagem) {
         System.out.print(mensagem);
-        return scanner.nextLine();
+        return sc.nextLine();
     }
 
     public static int lerInt(String mensagem) {
         while (true) {
             try {
                 System.out.print(mensagem);
-                return Integer.parseInt(scanner.nextLine());
+                return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Valor inválido. Digite um número inteiro.");
             }
@@ -30,7 +30,7 @@ public class InputUtils {
         while (true) {
             try {
                 System.out.print(mensagem);
-                return new BigDecimal(scanner.nextLine());
+                return new BigDecimal(sc.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Valor inválido. Digite um número decimal (ex: 10.99).");
             }
@@ -42,10 +42,36 @@ public class InputUtils {
         while (true) {
             try {
                 System.out.print(mensagem + " (dd/MM/yyyy): ");
-                String input = scanner.nextLine();
+                String input = sc.nextLine();
                 return LocalDate.parse(input, formatter);
             } catch (DateTimeParseException e) {
                 System.out.println("Data inválida. Use o formato dd/MM/yyyy.");
+            }
+        }
+    }
+    
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    // Método para ler e validar uma data de validade
+    public static LocalDate lerDataValidade(String mensagem) {
+        while (true) {
+            System.out.print(mensagem);
+            String input = scanner.nextLine().trim();
+            
+            try {
+                LocalDate data = LocalDate.parse(input, DATE_FORMATTER);
+                
+                // Valida se a data é futura
+                if (data.isBefore(LocalDate.now())) {
+                    System.out.println("Erro: A data deve ser futura. Tente novamente.");
+                    continue;
+                }
+                
+                return data;
+                
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Use DD/MM/AAAA (ex: 25/12/2024).");
             }
         }
     }
