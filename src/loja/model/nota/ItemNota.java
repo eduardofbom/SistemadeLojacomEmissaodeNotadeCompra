@@ -1,6 +1,6 @@
-package loja.model.nota;
+package src.loja.model.nota;
 
-import loja.model.produto.Produto;
+import src.loja.model.produto.Produto;
 import java.math.BigDecimal;
 
 public class ItemNota {

@@ -1,4 +1,4 @@
-package loja.model.cliente;
+package src.loja.model.cliente;
 
 public abstract class Cliente {
 	// definicao de atributos protected - encapsulamento

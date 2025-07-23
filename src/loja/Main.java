@@ -1,9 +1,9 @@
-package loja;
+package src.loja;
 
-import loja.model.produto.*;
-import loja.model.cliente.*;
-import loja.model.nota.*;
-import loja.ui.*;
+import src.loja.model.produto.*;
+import src.loja.model.cliente.*;
+import src.loja.model.nota.*;
+import src.loja.ui.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;

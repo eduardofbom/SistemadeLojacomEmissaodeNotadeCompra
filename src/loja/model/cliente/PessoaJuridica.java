@@ -1,5 +1,5 @@
 // PessoaJuridica.java
-package loja.model.cliente;
+package src.loja.model.cliente;
 
 public class PessoaJuridica extends Cliente {
 	protected String cnpj;

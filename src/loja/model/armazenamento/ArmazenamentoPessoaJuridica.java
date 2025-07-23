@@ -1,6 +1,6 @@
-package loja.model.armazenamento;
+package src.loja.model.armazenamento;
 
-import loja.model.cliente.PessoaJuridica;
+import src.loja.model.cliente.PessoaJuridica;
 
 public class ArmazenamentoPessoaJuridica extends Armazenamento {
     private PessoaJuridica[] empresas = new PessoaJuridica[CAPACIDADE_MAXIMA];
@@ -8,6 +8,7 @@ public class ArmazenamentoPessoaJuridica extends Armazenamento {
     public boolean adicionar(PessoaJuridica empresa) {
         if (empresa == null || estaCheio()) return false;
         empresas[tamanho++] = empresa;
+        tamanhoAux++;
         return true;
     }
     
@@ -31,9 +32,21 @@ public class ArmazenamentoPessoaJuridica extends Armazenamento {
         return null;
     }    
     
+    /*
     public PessoaJuridica[] listarTodos() {
         PessoaJuridica[] copia = new PessoaJuridica[tamanho];
         System.arraycopy(empresas, 0, copia, 0, tamanho);
         return copia;
+    }
+    */
+
+    public void listarTodos() {
+        for (int i=0; i<tamanhoAux; i++) {
+        	if(empresas[i] == null) {
+        		
+        	} else {        		
+        		System.out.println(empresas[i]);
+        	}
+        }
     }
 }

@@ -1,6 +1,6 @@
-package loja.model.armazenamento;
+package src.loja.model.armazenamento;
 
-import loja.model.produto.ProdutoDigital;
+import src.loja.model.produto.ProdutoDigital;
 
 public class ArmazenamentoProdutoDigital extends Armazenamento {
     private ProdutoDigital[] produtos = new ProdutoDigital[CAPACIDADE_MAXIMA];
@@ -8,6 +8,7 @@ public class ArmazenamentoProdutoDigital extends Armazenamento {
     public boolean adicionar(ProdutoDigital produto) {
         if (produto == null || estaCheio()) return false;
         produtos[tamanho++] = produto;
+        tamanhoAux++;
         return true;
     }
     
@@ -30,24 +31,22 @@ public class ArmazenamentoProdutoDigital extends Armazenamento {
         }
         return null;
     }
-    
+   
+
     /*
-    public boolean atualizar(String codigo, ProdutoDigital novosDados) {
-        ProdutoDigital existente = buscarPorCodigo(codigo);
-        if (existente != null) {
-            existente.setNome(novosDados.getNome());
-            existente.setPreco(novosDados.getPreco());
-            existente.setTamanhoMb(novosDados.getTamanhoMb());
-            existente.setLinkDownload(novosDados.getLinkDownload());
-            return true;
-        }
-        return false;
-    }
-    */
-    
     public ProdutoDigital[] listarTodos() {
         ProdutoDigital[] copia = new ProdutoDigital[tamanho];
         System.arraycopy(produtos, 0, copia, 0, tamanho);
         return copia;
+    }
+     */
+    public void listarTodos() {
+        for (int i=0; i<tamanhoAux; i++) {
+        	if(produtos[i] == null) {
+        		
+        	} else {        		
+        		System.out.println(produtos[i]);
+        	}
+        }
     }
 }

@@ -1,7 +1,7 @@
-package loja.model.armazenamento;
+package src.loja.model.armazenamento;
 
-import loja.model.produto.ProdutoFisico;
-import java.math.BigDecimal;
+import src.loja.model.produto.ProdutoFisico;
+// import java.math.BigDecimal;
 
 public class ArmazenamentoProdutoFisico extends Armazenamento {
     private ProdutoFisico[] produtos = new ProdutoFisico[CAPACIDADE_MAXIMA];
@@ -9,6 +9,7 @@ public class ArmazenamentoProdutoFisico extends Armazenamento {
     public boolean adicionar(ProdutoFisico produto) {
         if (produto == null || estaCheio()) return false;
         produtos[tamanho++] = produto;
+        tamanhoAux++;
         return true;
     }
     
@@ -32,24 +33,22 @@ public class ArmazenamentoProdutoFisico extends Armazenamento {
         return null;
     }
     
+
     /*
-    public boolean atualizar(String codigo, ProdutoFisico novosDados) {
-        ProdutoFisico existente = buscarPorCodigo(codigo);
-        if (existente != null) {
-            existente.setNome(novosDados.getNome());
-            existente.setPreco(novosDados.getPreco());
-            existente.setPesoKg(novosDados.getPesoKg());
-            existente.setFrete(novosDados.getFrete());
-            return true;
-        }
-        return false;
-    }
-    */
-    
     public ProdutoFisico[] listarTodos() {
         ProdutoFisico[] copia = new ProdutoFisico[tamanho];
         System.arraycopy(produtos, 0, copia, 0, tamanho);
         return copia;
+    }
+    */
+    public void listarTodos() {
+        for (int i=0; i<tamanhoAux; i++) {
+        	if(produtos[i] == null) {
+        		
+        	} else {        		
+        		System.out.println(produtos[i]);
+        	}
+        }
     }
     
     public ProdutoFisico[] listarPorPesoMinimo(double pesoMinimo) {
@@ -67,4 +66,5 @@ public class ArmazenamentoProdutoFisico extends Armazenamento {
         }
         return resultado;
     }
+    
 }

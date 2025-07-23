@@ -1,6 +1,6 @@
-package loja.model.armazenamento;
+package src.loja.model.armazenamento;
 
-import loja.model.produto.ProdutoPerecivel;
+import src.loja.model.produto.ProdutoPerecivel;
 import java.time.LocalDate;
 
 public class ArmazenamentoProdutoPerecivel extends Armazenamento {
@@ -9,6 +9,7 @@ public class ArmazenamentoProdutoPerecivel extends Armazenamento {
     public boolean adicionar(ProdutoPerecivel produto) {
         if (produto == null || estaCheio()) return false;
         produtos[tamanho++] = produto;
+        tamanhoAux++;
         return true;
     }
     
@@ -32,25 +33,22 @@ public class ArmazenamentoProdutoPerecivel extends Armazenamento {
         return null;
     }
     
-    /*
-    public boolean atualizar(String codigo, ProdutoPerecivel novosDados) {
-        ProdutoPerecivel existente = buscarPorCodigo(codigo);
-        if (existente != null) {
-            existente.setNome(novosDados.getNome());
-            existente.setPreco(novosDados.getPreco());
-            existente.setPesoKg(novosDados.getPesoKg());
-            existente.setFrete(novosDados.getFrete());
-            existente.setValidade(novosDados.getValidade());
-            return true;
-        }
-        return false;
-    }
-    */
     
+    /*
     public ProdutoPerecivel[] listarTodos() {
         ProdutoPerecivel[] copia = new ProdutoPerecivel[tamanho];
         System.arraycopy(produtos, 0, copia, 0, tamanho);
         return copia;
+    }
+    */
+    public void listarTodos() {
+        for (int i=0; i<tamanhoAux; i++) {
+        	if(produtos[i] == null) {
+        		
+        	} else {        		
+        		System.out.println(produtos[i]);
+        	}
+        }
     }
     
     public ProdutoPerecivel[] listarProximosVencimento(int dias) {

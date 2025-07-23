@@ -1,4 +1,4 @@
-package loja.model.armazenamento;
+package src.loja.model.armazenamento;
 
 
 public abstract class Armazenamento {

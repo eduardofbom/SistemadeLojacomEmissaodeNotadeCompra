@@ -1,7 +1,7 @@
 // Nota.java
-package loja.model.nota;
+package src.loja.model.nota;
 
-import loja.model.cliente.Cliente;
+import src.loja.model.cliente.Cliente;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

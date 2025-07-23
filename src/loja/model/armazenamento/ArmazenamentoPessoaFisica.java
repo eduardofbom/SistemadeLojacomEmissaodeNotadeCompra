@@ -1,7 +1,6 @@
-package loja.model.armazenamento;
+package src.loja.model.armazenamento;
 
-import loja.model.armazenamento.Armazenamento;
-import loja.model.cliente.PessoaFisica;
+import src.loja.model.cliente.PessoaFisica;
 
 public class ArmazenamentoPessoaFisica extends Armazenamento {
     private PessoaFisica[] pessoas = new PessoaFisica[CAPACIDADE_MAXIMA];

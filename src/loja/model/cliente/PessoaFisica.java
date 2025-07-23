@@ -1,5 +1,5 @@
 // PessoaFisica.java
-package loja.model.cliente;
+package src.loja.model.cliente;
 
 public class PessoaFisica extends Cliente {
 	protected String cpf;

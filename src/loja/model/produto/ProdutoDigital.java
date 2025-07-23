@@ -1,4 +1,4 @@
-package loja.model.produto;
+package src.loja.model.produto;
 
 import java.math.BigDecimal;
 
