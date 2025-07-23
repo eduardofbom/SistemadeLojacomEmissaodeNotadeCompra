@@ -26,15 +26,21 @@ public class ProdutoPerecivel extends ProdutoFisico {
     public BigDecimal getFrete() {
     	return frete;
     }    
+    public LocalDate getValidade() {
+    	return validade;
+    }
     //-----
     
-    // setters
+	// setters
     public void setPesoKg(double pesoKg) {
     	this.pesoKg = pesoKg;
     }
     public void setFrete(BigDecimal frete) {
     	this.frete = frete;
     }
+    public void setValidade(LocalDate validade) {
+    	this.validade = validade;
+    }    
     //-----
     
 
@@ -54,4 +60,5 @@ public class ProdutoPerecivel extends ProdutoFisico {
     			String.format(" (Validade: %s)", this.validade);
     }
     //-----
+	
 }

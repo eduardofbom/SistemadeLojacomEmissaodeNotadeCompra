@@ -1,0 +1,53 @@
+package loja.model.armazenamento;
+
+import loja.model.cliente.PessoaJuridica;
+
+public class ArmazenamentoPessoaJuridica extends Armazenamento {
+    private PessoaJuridica[] empresas = new PessoaJuridica[CAPACIDADE_MAXIMA];
+    
+    public boolean adicionar(PessoaJuridica empresa) {
+        if (empresa == null || estaCheio()) return false;
+        empresas[tamanho++] = empresa;
+        return true;
+    }
+    
+    public boolean remover(PessoaJuridica empresa) {
+        for (int i = 0; i < tamanho; i++) {
+            if (empresas[i].equals(empresa)) {
+                System.arraycopy(empresas, i+1, empresas, i, tamanho-i-1);
+                empresas[--tamanho] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public PessoaJuridica buscarPorCnpj(String cnpj) {
+        for (int i = 0; i < tamanho; i++) {
+            if (empresas[i].getCnpj().equals(cnpj)) {
+                return empresas[i];
+            }
+        }
+        return null;
+    }
+    
+    /*
+    public boolean atualizar(String cnpj, PessoaJuridica novosDados) {
+        PessoaJuridica existente = buscarPorCnpj(cnpj);
+        if (existente != null) {
+            existente.setNome(novosDados.getNome());
+            existente.setEndereco(novosDados.getEndereco());
+            existente.setTelefone(novosDados.getTelefone());
+            existente.setInscricaoEstadual(novosDados.getInscricaoEstadual());
+            return true;
+        }
+        return false;
+    }
+    */
+    
+    public PessoaJuridica[] listarTodos() {
+        PessoaJuridica[] copia = new PessoaJuridica[tamanho];
+        System.arraycopy(empresas, 0, copia, 0, tamanho);
+        return copia;
+    }
+}
