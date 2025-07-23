@@ -23,6 +23,17 @@ public class ArmazenamentoPessoaJuridica extends Armazenamento {
         return false;
     }
     
+    public PessoaJuridica buscarId(String id) {
+        for (int i = 0; i < tamanhoAux; i++) {
+        	if(empresas[i] == null) {
+        		
+        	} else if (id.equalsIgnoreCase(empresas[i].getId())) {
+                return empresas[i];
+            }
+        }
+        return null;
+    }
+
     public PessoaJuridica buscarPorCnpj(String cnpj) {
         for (int i = 0; i < tamanho; i++) {
             if (empresas[i].getCnpj().equals(cnpj)) {

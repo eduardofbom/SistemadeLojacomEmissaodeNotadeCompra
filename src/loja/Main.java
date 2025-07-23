@@ -1,64 +1,31 @@
 package src.loja;
 
-import src.loja.model.produto.*;
-import src.loja.model.cliente.*;
-import src.loja.model.nota.*;
+// import src.loja.ui.ConsoleMenu;
+// import src.loja.ui.InputUtils;
 import src.loja.ui.*;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main {
-    private static List<Produto> produtos = new ArrayList<>();
-    private static List<Cliente> clientes = new ArrayList<>();
-    private static List<Nota> notas = new ArrayList<>();
-    private static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
+        System.out.println("=== SISTEMA DE LOJA ===");
+        System.out.println("Inicializando armazenamentos...");
+        
+        // Inicializa o menu do sistema
         ConsoleMenu menu = new ConsoleMenu();
-        boolean running = true;
-
-        while (running) {
+        int opcao;
+        
+        // Loop principal do sistema
+        do {
             menu.exibirMenuPrincipal();
-            int opcao = InputUtils.lerInt("Escolha uma opção: ");
-
-            switch (opcao) {
-                case 1:
-                    cadastrarProduto();
-                    break;
-                case 2:
-                    alterarProduto();
-                    break;
-                case 3:
-                    cadastrarCliente();
-                    break;
-                case 4:
-                    alterarCliente();
-                    break;
-                case 5:
-                    criarNotaCompra();
-                    break;
-                case 6:
-                    listarNotas();
-                    break;
-                case 7:
-                    listarProdutos();
-                    break;
-                case 8:
-                    listarClientes();
-                    break;
-                case 0:
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
+            opcao = InputUtils.lerInteiro("Escolha uma opção: ");
+            menu.processarOpcao(opcao);
+            
+            // Pausa para visualização
+            if (opcao != 0) {
+                System.out.println("\nPressione Enter para continuar...");
+                InputUtils.lerString("");
             }
-        }
+        } while (opcao != 0);
+        
         System.out.println("Sistema encerrado.");
     }
-
-    // Implementação dos métodos de operação (cadastrarProduto, alterarProduto, etc.)
-    // ...
 }

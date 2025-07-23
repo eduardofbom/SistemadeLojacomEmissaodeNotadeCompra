@@ -4,43 +4,54 @@ import src.loja.model.produto.Produto;
 import java.math.BigDecimal;
 
 public class ItemNota {
-    
-	// definicao de atributos privados - encapsulamento
-	private Produto produto;
+    private Produto produto;
     private int quantidade;
     private BigDecimal precoUnitario;
-    //-----
 
-    // construtores da classe
-    public ItemNota() {}  // construtor padrao
-    public ItemNota(Produto produto, int quantidade, BigDecimal precoUnitario) {  // construtor completo
-		this.produto = produto;
-		this.quantidade = quantidade;
-		this.precoUnitario = produto.calcularPrecoFinal();
-	}
-    //-----
-    
-    // getters
+    public ItemNota(Produto produto, int quantidade) {
+        if (produto == null) {
+            throw new IllegalArgumentException("Produto não pode ser nulo");
+        }
+        if (quantidade <= 0) {
+            throw new IllegalArgumentException("Quantidade deve ser maior que zero");
+        }
+        
+        this.produto = produto;
+        this.quantidade = quantidade;
+        this.precoUnitario = produto.calcularPrecoFinal();
+    }
+
+    public BigDecimal calcularTotal() {
+        return precoUnitario.multiply(new BigDecimal(quantidade));
+    }
+
+    // Getters
     public Produto getProduto() {
-    	return produto;
+        return produto;
     }
+
     public int getQuantidade() {
-    	return quantidade;
+        return quantidade;
     }
+
     public BigDecimal getPrecoUnitario() {
-    	return precoUnitario;
+        return precoUnitario;
     }
-    //-----
-    
-    // setters    
+
+    // Setters com validação
     public void setQuantidade(int quantidade) {
-    	this.quantidade = quantidade;
+        if (quantidade <= 0) {
+            throw new IllegalArgumentException("Quantidade deve ser maior que zero");
+        }
+        this.quantidade = quantidade;
     }
-    //-----
-    
-    // metodos
-    
-    // definicao manual do toString
-    
-    //-----
+
+    public String toString() {
+        return String.format("%d x %s - %s (R$ %.2f) = R$ %.2f",
+                quantidade,
+                produto.getCodigo(),
+                produto.getNome(),
+                precoUnitario,
+                calcularTotal());
+    }
 }
