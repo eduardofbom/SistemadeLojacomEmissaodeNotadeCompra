@@ -29,21 +29,7 @@ public class ArmazenamentoPessoaJuridica extends Armazenamento {
             }
         }
         return null;
-    }
-    
-    /*
-    public boolean atualizar(String cnpj, PessoaJuridica novosDados) {
-        PessoaJuridica existente = buscarPorCnpj(cnpj);
-        if (existente != null) {
-            existente.setNome(novosDados.getNome());
-            existente.setEndereco(novosDados.getEndereco());
-            existente.setTelefone(novosDados.getTelefone());
-            existente.setInscricaoEstadual(novosDados.getInscricaoEstadual());
-            return true;
-        }
-        return false;
-    }
-    */
+    }    
     
     public PessoaJuridica[] listarTodos() {
         PessoaJuridica[] copia = new PessoaJuridica[tamanho];
